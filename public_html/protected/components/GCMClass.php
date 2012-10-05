@@ -45,12 +45,23 @@ class GCMClass extends CComponent {
         $this->setHeaders();
         
         $this->_rest->post($this->_item);
+        $curlInfo = $this->_rest->getCurlInfo();
         $this->response = $this->_rest->responseBody;
         $this->responseInfo = $this->_rest->responseInfo;
-
+        
+//        if(YII_DEBUG){
+//            echo '<pre>';
+//            var_dump($curlInfo);
+//            var_dump($this->responseInfo);
+//            var_dump($this->response);
+//            echo '</pre>';
+//            exit;
+//        }
+        
         if($this->responseInfo->http_code != 200 ){
             return false;
         }
+        
         return true;
     }
     
@@ -73,7 +84,7 @@ class GCMClass extends CComponent {
     }
 
     public function setHeaders(){
-        $headers  = array ('Authorization: key='.$this->_key,'Accept: application/json');
+        $headers  = array ('Authorization: key='.$this->_key,'Content-Type: application/json','Accept: application/json');
         $this->_rest->setHeaders($headers);
     }
     

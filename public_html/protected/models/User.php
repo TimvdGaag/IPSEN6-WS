@@ -17,8 +17,9 @@
 class User extends CActiveRecord
 {
     const All = 0;
-    const Students = 1;
-    const Teachers = 2;
+    const Admin = 1;
+    const Students = 2;
+    const Teachers = 3;
     
 	/**
 	 * Returns the static model of the specified AR class.
