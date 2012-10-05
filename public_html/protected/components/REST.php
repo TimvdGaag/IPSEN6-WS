@@ -62,6 +62,10 @@ class REST extends CComponent{
 		$this->curl = curl_init();
 	}
 	
+    public function getCurlInfo(){
+        return curl_getinfo($this->curl);
+    }
+    
 	/**
 	 * destruct REST instance
 	 * 
@@ -84,9 +88,9 @@ class REST extends CComponent{
 	public function post($item){
         
 		if(!is_string($item)){
-			$jsonobject = addslashes(json_encode($item));
+			$jsonobject = json_encode($item);
 		}
-		
+        
 		curl_setopt($this->curl, CURLOPT_POST, true);
 		curl_setopt($this->curl, CURLOPT_POSTFIELDS, $jsonobject);		
 
@@ -149,7 +153,7 @@ class REST extends CComponent{
             $this->setHeaders();
 
 		//curl_setopt($this->curl, CURLOPT_TIMEOUT, 10); 
-		curl_setopt($this->curl, CURLOPT_URL, $this->server); 
+		curl_setopt($this->curl, CURLOPT_URL, $this->server);
 		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($this->curl, CURLOPT_HTTPHEADER, $this->headers);
 		curl_setopt($this->curl, CURLINFO_HEADER_OUT, true ); 

@@ -127,15 +127,12 @@ class Messages extends CActiveRecord
         $gcm->setMessage($this);
         if(!$gcm->sendToGCM()){
             $response = $gcm->getResponse();
-            $succes = false;
+            return false;
         }
-//        if(strstr($response,'Error')){
-//            throw new CHttpException(500,$response);
-//        }
         
-        if($succes == false)
-            throw new CHttpException(500,"we had an error" .$response);
+        //if($succes == false) 
+        //    throw new CHttpException(500,"we had an error" .$response);
         
-        return false;
+        return true;
     }
 }
