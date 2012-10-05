@@ -82,9 +82,8 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=web31',
+			'connectionString' => 'mysql:host=localhost;dbname=service',
 			'emulatePrepare' => true,
-            'tablePrefix' => 'web31',
 			'username' => 'web31',
 			'password' => '6raSpaju',
 			'charset' => 'utf8',
